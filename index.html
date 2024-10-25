@@ -17,11 +17,8 @@
         document.getElementById('dataForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const data = document.getElementById('dataInput').value;
-            // Используем функцию Telegram API для отправки данных обратно в бота
             Telegram.WebApp.sendData(data);
         });
-
-        // Сообщаем Telegram WebApp, что мини-приложение готово
         Telegram.WebApp.ready();
     </script>
 </body>
