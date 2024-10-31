@@ -8,5 +8,22 @@
 </head>
 <body>
     <h1>Enter your data</h1>
+    <form id="dataForm">
+        <label for="dataInput">Data:</label>
+        <input type="text" id="dataInput" name="data" required>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Предотвращаем стандартное поведение формы
+
+            const data = document.getElementById('dataInput').value;
+            Telegram.WebApp.sendData(data);  // Отправляем данные в бота
+
+            // (Опционально) Можно закрыть webview после отправки
+            // Telegram.WebApp.close();
+        });
+        Telegram.WebApp.ready();
+    </script>
 </body>
 </html>
