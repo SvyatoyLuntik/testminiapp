@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -11,13 +12,19 @@
     <form id="dataForm">
         <label for="dataInput">Data:</label>
         <input type="text" id="dataInput" name="data" required>
-        <button type="submit">Sgfgubmit</button>
+        <button type="submit">Submit</button>
     </form>
     <script>
         document.getElementById('dataForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+            // Предотвращаем стандартное поведение формы
+            event.preventDefault();  // !!! Эта строка должна быть первой в обработчике
+
             const data = document.getElementById('dataInput').value;
+             // Отправляем данные
             Telegram.WebApp.sendData(data);
+
+            // (Опционально) Можно закрыть webview после отправки
+            // Telegram.WebApp.close();
         });
         Telegram.WebApp.ready();
     </script>
